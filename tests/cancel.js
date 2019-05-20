@@ -12,6 +12,8 @@ module.exports = {
     
     'It can edit and cancel employee': browser => {
         manager
+        .expect.element('@addButton').text.to.equal('+ Add Employee').before(20000)
+        manager
             .clickEmployee('Larry Fine')
             .editEmployee({ name: 'Denis Hub', phone: '5086793434', email: 'dhub@gmail.com',  title: 'Manager' })
             .verify.valueContains('@nameField', 'Denis Hub')
@@ -20,7 +22,7 @@ module.exports = {
             .verify.valueContains('@titleField', 'Manager')
             .click ('@cancelButton')
             .clickEmployee('Walt Disney')
-            .expect.element('@cardTitle').text.to.equal('Walt Disney')
+            .expect.element('@cardTitle').text.to.equal('Walt Disney').before(500)
         manager
             .clickEmployee('Larry Fine')
             .expect.element('@cardTitle').text.to.equal('Larry Fine')

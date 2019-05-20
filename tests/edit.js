@@ -11,6 +11,8 @@ module.exports = {
     },
     'edit employee': browser => {
         manager
+        .expect.element('@addButton').text.to.equal('+ Add Employee').before(20000)
+        manager
             .clickEmployee('Harry Potter')
             .editEmployee({ name: 'Marcel Blom', phone: '6179591212', email: 'mblom@dvmnt.com', title: 'Pro-Sailer' })
             .click('@saveButton')
